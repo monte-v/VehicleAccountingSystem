@@ -24,10 +24,15 @@ public:
         const QVariant& value,
         int role = Qt::EditRole) override;
 
+    // CRUD
+    void addVehicle(const Vehicle& vehicle);
+    void removeVehicle(int row);
 
+    QVector<Vehicle> vehicles() const;
+    void setVehicles(const QVector<Vehicle>& vehicles);
 
 private:
     QVector<Vehicle> m_vehicles;
-
+    int m_nextId = 1;
 };
 

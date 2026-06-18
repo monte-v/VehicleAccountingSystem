@@ -156,4 +156,60 @@ bool VehicleModel::setData(const QModelIndex& index,
     return true;
 }
 
+void VehicleModel::addVehicle(const Vehicle& vehicle)
+{
+    beginInsertRows(
+        QModelIndex(),
+        m_vehicles.size(),
+        m_vehicles.size());
+
+    Vehicle newVehicle = vehicle;
+
+    newVehicle.id = m_nextId++;
+
+    m_vehicles.append(newVehicle);
+
+    endInsertRows();
+}
+
+void VehicleModel::removeVehicle(int row)
+{
+    if (row < 0 || row >= m_vehicles.size())
+        return;
+
+    beginRemoveRows(
+        QModelIndex(),
+        row,
+        row);
+
+    m_vehicles.removeAt(row);
+
+    endRemoveRows();
+}
+
+QVector<Vehicle> VehicleModel::vehicles() const
+{
+    return m_vehicles;
+}
+
+void VehicleModel::setVehicles(
+    const QVector<Vehicle>& vehicles)
+{
+    beginResetModel();
+
+    m_vehicles = vehicles;
+
+    m_nextId = 1;
+
+    for (const Vehicle& vehicle : m_vehicles)
+    {
+        if (vehicle.id >= m_nextId)
+        {
+            m_nextId = vehicle.id + 1;
+        }
+    }
+
+    endResetModel();
+}
+
 
