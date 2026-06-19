@@ -1,4 +1,4 @@
-#include "VehicleModel.h"
+п»ї#include "VehicleModel.h"
 
 VehicleModel::VehicleModel(QObject* parent)
 {
@@ -71,19 +71,19 @@ QVariant VehicleModel::headerData(int section,
             return "ID";
 
         case 1:
-            return "Тип";
+            return QStringLiteral("РўРёРї");
 
         case 2:
-            return "Марка";
+            return QStringLiteral("РњР°СЂРєР°");
 
         case 3:
-            return "Модель";
+            return QStringLiteral("РњРѕРґРµР»СЊ");
 
         case 4:
-            return "Год";
+            return QStringLiteral("Р“РѕРґ");
 
         case 5:
-            return "Вес";
+            return QStringLiteral("Р’РµСЃ");
 
         default:
             return QVariant();

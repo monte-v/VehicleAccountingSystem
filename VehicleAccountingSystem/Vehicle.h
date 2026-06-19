@@ -1,4 +1,4 @@
-#pragma once
+﻿#pragma once
 #include <QString>
 
 struct Vehicle
@@ -10,5 +10,5 @@ struct Vehicle
     int year;
     double weight;
 
-    static constexpr int FIELD_COUNT = 5;
+    static constexpr int FIELD_COUNT = 6;
 };

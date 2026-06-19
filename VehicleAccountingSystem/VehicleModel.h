@@ -1,4 +1,4 @@
-#pragma once
+п»ї#pragma once
 #include <Vehicle.h>
 #include <QAbstractTableModel>
 
@@ -7,7 +7,7 @@ class VehicleModel : public QAbstractTableModel
 public:
     explicit VehicleModel(QObject* parent = nullptr);
 
-    // Методы модели
+    // РњРµС‚РѕРґС‹ РјРѕРґРµР»Рё
     int rowCount(const QModelIndex& parent = QModelIndex()) const override;
     int columnCount(const QModelIndex& parent = QModelIndex()) const override;
 

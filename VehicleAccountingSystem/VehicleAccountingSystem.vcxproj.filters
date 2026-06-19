@@ -11,6 +11,9 @@
     <Filter Include="models">
       <UniqueIdentifier>{1e090619-8454-4f30-ba00-73be68ab9b5a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="dialogs">
+      <UniqueIdentifier>{f9a0c4dc-80dc-4453-9344-5e644fcd109b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="VehicleAccountingSystem.qrc">
@@ -25,15 +28,24 @@
     <ClCompile Include="VehicleModel.cpp">
       <Filter>models</Filter>
     </ClCompile>
+    <ClCompile Include="VehicleDialog.cpp">
+      <Filter>dialogs</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="VehicleAccountingSystem.h">
       <Filter>views</Filter>
     </QtMoc>
+    <QtMoc Include="VehicleDialog.h">
+      <Filter>dialogs</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="VehicleAccountingSystem.ui">
       <Filter>views</Filter>
+    </QtUic>
+    <QtUic Include="VehicleDialog.ui">
+      <Filter>dialogs</Filter>
     </QtUic>
   </ItemGroup>
   <ItemGroup>

@@ -92,8 +92,10 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="VehicleDialog.cpp" />
     <ClCompile Include="VehicleModel.cpp" />
     <QtRcc Include="VehicleAccountingSystem.qrc" />
+    <QtUic Include="VehicleDialog.ui" />
     <QtUic Include="VehicleAccountingSystem.ui" />
     <QtMoc Include="VehicleAccountingSystem.h" />
     <ClCompile Include="VehicleAccountingSystem.cpp" />
@@ -101,6 +103,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Vehicle.h" />
+    <QtMoc Include="VehicleDialog.h" />
     <ClInclude Include="VehicleModel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
