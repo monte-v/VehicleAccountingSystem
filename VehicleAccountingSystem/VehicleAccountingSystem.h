@@ -1,9 +1,13 @@
 ﻿#pragma once
 
 #include <QtWidgets/QMainWindow>
+#include <QFileDialog>
+#include <QMessageBox>
+
 #include "ui_VehicleAccountingSystem.h"
 #include "VehicleModel.h"
 #include "VehicleDialog.h"
+#include "JsonStorage.h"
 
 class VehicleAccountingSystem : public QMainWindow
 {
@@ -21,5 +25,8 @@ private slots:
     void on_btnTest_clicked();
     void on_btnDelete_clicked();
     void on_btnAdd_clicked();
+    
+    void on_mbfOpen_triggered();
+    void on_mbfSave_triggered();
 };
 

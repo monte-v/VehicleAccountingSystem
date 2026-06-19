@@ -1,5 +1,7 @@
 ﻿#include "VehicleAccountingSystem.h"
 
+
+
 VehicleAccountingSystem::VehicleAccountingSystem(QWidget *parent)
     : QMainWindow(parent)
 {
@@ -57,5 +59,61 @@ void VehicleAccountingSystem::on_btnAdd_clicked()
     if (dialog.exec() == QDialog::Accepted)
     {
         m_model.addVehicle(dialog.vehicle());
+    }
+}
+
+void VehicleAccountingSystem::on_mbfOpen_triggered() 
+{
+    QString fileName = QFileDialog::getOpenFileName(
+        this,
+        QStringLiteral("Открыть файл"),
+        "",
+        QStringLiteral("JSON (*.json)")
+    );
+
+    if (fileName.isEmpty()) 
+        return;
+
+    QVector<Vehicle> vehicles;
+
+    if (!JsonStorage::load(fileName, vehicles))
+    {
+        QMessageBox::warning(
+            this,
+            QStringLiteral("Ошибка"),
+            QStringLiteral("Не удалось открыть файл."));
+        return;
+    }
+
+    m_model.setVehicles(vehicles);
+}
+
+void VehicleAccountingSystem::on_mbfSave_triggered()
+{
+    if (m_model.vehicles().isEmpty())
+    {
+        QMessageBox::warning(
+            this,
+            QStringLiteral("Ошибка"),
+            QStringLiteral("Нет данных для сохранения."));
+        return;
+    }
+    
+    QString fileName = QFileDialog::getSaveFileName(
+        this,
+        QStringLiteral("Сохранить файл"),
+        "",
+        QStringLiteral("JSON (*.json)")
+    );
+
+    if (fileName.isEmpty())
+        return;
+
+    if (!JsonStorage::save(fileName, m_model.vehicles()))
+    {
+        QMessageBox::warning(
+            this,
+            QStringLiteral("Ошибка"),
+            QStringLiteral("Не удалось сохранить файл."));
     }
 }

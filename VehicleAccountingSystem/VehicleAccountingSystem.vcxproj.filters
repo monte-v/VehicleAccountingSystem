@@ -14,6 +14,9 @@
     <Filter Include="dialogs">
       <UniqueIdentifier>{f9a0c4dc-80dc-4453-9344-5e644fcd109b}</UniqueIdentifier>
     </Filter>
+    <Filter Include="services">
+      <UniqueIdentifier>{ac763b9c-4ada-47c2-8584-a7377628c3f7}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="VehicleAccountingSystem.qrc">
@@ -30,6 +33,9 @@
     </ClCompile>
     <ClCompile Include="VehicleDialog.cpp">
       <Filter>dialogs</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonStorage.cpp">
+      <Filter>services</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -54,6 +60,9 @@
     </ClInclude>
     <ClInclude Include="VehicleModel.h">
       <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonStorage.h">
+      <Filter>services</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

@@ -73,6 +73,14 @@
      <height>25</height>
     </rect>
    </property>
+   <widget class="QMenu" name="file">
+    <property name="title">
+     <string>Файл</string>
+    </property>
+    <addaction name="mbfOpen"/>
+    <addaction name="mbfSave"/>
+   </widget>
+   <addaction name="file"/>
   </widget>
   <widget class="QToolBar" name="mainToolBar">
    <attribute name="toolBarArea">
@@ -83,6 +91,16 @@
    </attribute>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
+  <action name="mbfOpen">
+   <property name="text">
+    <string>Открыть</string>
+   </property>
+  </action>
+  <action name="mbfSave">
+   <property name="text">
+    <string>Сохранить</string>
+   </property>
+  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources>

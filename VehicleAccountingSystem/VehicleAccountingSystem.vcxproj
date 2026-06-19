@@ -92,6 +92,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="JsonStorage.cpp" />
     <ClCompile Include="VehicleDialog.cpp" />
     <ClCompile Include="VehicleModel.cpp" />
     <QtRcc Include="VehicleAccountingSystem.qrc" />
@@ -102,6 +103,7 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="JsonStorage.h" />
     <ClInclude Include="Vehicle.h" />
     <QtMoc Include="VehicleDialog.h" />
     <ClInclude Include="VehicleModel.h" />
