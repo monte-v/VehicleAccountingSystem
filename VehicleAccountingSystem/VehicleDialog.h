@@ -1,9 +1,14 @@
 #pragma once
 
 #include <QDialog>
+#include <QMessageBox>
+#include <QDialogButtonBox>
+
+#include <QDate>
 
 #include "Vehicle.h"
 #include "ui_VehicleDialog.h"
+
 
 class VehicleDialog : public QDialog
 {
@@ -18,4 +23,7 @@ public:
 
 private:
     Ui::VehicleDialog ui;
+
+protected:
+    void accept() override;
 };

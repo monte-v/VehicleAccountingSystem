@@ -1,7 +1,5 @@
 ﻿#include "VehicleAccountingSystem.h"
 
-
-
 VehicleAccountingSystem::VehicleAccountingSystem(QWidget *parent)
     : QMainWindow(parent)
 {

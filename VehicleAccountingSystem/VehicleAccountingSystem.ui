@@ -23,7 +23,7 @@
    </size>
   </property>
   <property name="windowTitle">
-   <string>Учет траспортных средств</string>
+   <string>Учет транспортных средств</string>
   </property>
   <property name="layoutDirection">
    <enum>Qt::LeftToRight</enum>

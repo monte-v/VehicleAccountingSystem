@@ -5,6 +5,8 @@ VehicleDialog::VehicleDialog(QWidget* parent)
     : QDialog(parent)
 {
     ui.setupUi(this);
+
+    setWindowFlag(Qt::WindowContextHelpButtonHint, false);
 }
 
 VehicleDialog::~VehicleDialog()
@@ -33,3 +35,27 @@ Vehicle VehicleDialog::vehicle() const
     return vehicle;
 }
 
+void VehicleDialog::accept()
+{
+    if (ui.leType->text().trimmed().isEmpty() ||
+        ui.leBrand->text().trimmed().isEmpty() ||
+        ui.leModel->text().trimmed().isEmpty() ||
+        ui.dsbWeight->value() <= 0)
+    {
+        QMessageBox::warning(
+            this,
+            QStringLiteral("Ошибка"),
+            QStringLiteral("Заполните все поля.\nВес должен быть больше нуля."));
+        return;
+    }
+    if (ui.sbYear->value() > QDate::currentDate().year())
+    {
+        QMessageBox::warning(
+            this,
+            QStringLiteral("Ошибка"),
+            QStringLiteral("Год не может быть больше текущего"));
+        return;
+    }
+
+    QDialog::accept();
+}
