@@ -11,7 +11,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Dialog</string>
+   <string>Добавить транспортное стредство</string>
   </property>
   <widget class="QWidget" name="layoutWidget">
    <property name="geometry">
@@ -21,6 +21,12 @@
      <width>351</width>
      <height>33</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <layout class="QHBoxLayout">
     <property name="spacing">
@@ -40,6 +46,12 @@
     </property>
     <item>
      <widget class="QPushButton" name="okButton">
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>OK</string>
       </property>
@@ -47,6 +59,12 @@
     </item>
     <item>
      <spacer>
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
@@ -60,6 +78,12 @@
     </item>
     <item>
      <widget class="QPushButton" name="cancelButton">
+      <property name="font">
+       <font>
+        <family>Segoe UI</family>
+        <pointsize>9</pointsize>
+       </font>
+      </property>
       <property name="text">
        <string>Cancel</string>
       </property>
@@ -76,6 +100,12 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Тип</string>
    </property>
@@ -89,6 +119,12 @@
      <height>24</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLineEdit" name="leBrand">
    <property name="geometry">
@@ -98,6 +134,12 @@
      <width>261</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="text">
     <string/>
@@ -112,6 +154,12 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Марка</string>
    </property>
@@ -125,6 +173,12 @@
      <height>24</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
   </widget>
   <widget class="QLabel" name="label_3">
    <property name="geometry">
@@ -135,6 +189,12 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Модель</string>
    </property>
@@ -142,11 +202,17 @@
   <widget class="QSpinBox" name="sbYear">
    <property name="geometry">
     <rect>
-     <x>301</x>
+     <x>281</x>
      <y>140</y>
-     <width>71</width>
+     <width>91</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="minimum">
     <number>1900</number>
@@ -167,6 +233,12 @@
      <height>21</height>
     </rect>
    </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
+   </property>
    <property name="text">
     <string>Год</string>
    </property>
@@ -179,6 +251,12 @@
      <width>91</width>
      <height>24</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="prefix">
     <string/>
@@ -198,6 +276,12 @@
      <width>55</width>
      <height>21</height>
     </rect>
+   </property>
+   <property name="font">
+    <font>
+     <family>Segoe UI</family>
+     <pointsize>9</pointsize>
+    </font>
    </property>
    <property name="text">
     <string>Вес</string>

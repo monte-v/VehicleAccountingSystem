@@ -9,7 +9,7 @@ VehicleAccountingSystem::VehicleAccountingSystem(QWidget *parent)
 
     ui.tableView->setModel(&m_model);
 
-    ui.tableView->horizontalHeader()->setStretchLastSection(true);
+    ui.tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     ui.tableView->setSelectionBehavior(
         QAbstractItemView::SelectRows);
