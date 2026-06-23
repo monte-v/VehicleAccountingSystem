@@ -3,6 +3,18 @@
 
 struct Vehicle
 {
+    enum Columns
+    {
+        Id = 0,
+        Type,
+        Brand,
+        Model,
+        Year,
+        Weight,
+
+        FIELD_COUNT
+    };
+
     int id;
     QString type;
     QString brand;
@@ -10,5 +22,4 @@ struct Vehicle
     int year;
     double weight;
 
-    static constexpr int FIELD_COUNT = 6;
 };

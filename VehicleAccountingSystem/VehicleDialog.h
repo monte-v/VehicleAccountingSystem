@@ -3,7 +3,6 @@
 #include <QDialog>
 #include <QMessageBox>
 #include <QDialogButtonBox>
-
 #include <QDate>
 
 #include "Vehicle.h"

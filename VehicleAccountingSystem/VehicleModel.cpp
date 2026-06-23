@@ -33,22 +33,22 @@ QVariant VehicleModel::data(const QModelIndex& index, int role) const
 
     switch (index.column())
     {
-    case 0:
+    case Vehicle::Id:
         return vehicle.id;
 
-    case 1:
+    case Vehicle::Type:
         return vehicle.type;
 
-    case 2:
+    case Vehicle::Brand:
         return vehicle.brand;
 
-    case 3:
+    case Vehicle::Model:
         return vehicle.model;
 
-    case 4:
+    case Vehicle::Year:
         return vehicle.year;
 
-    case 5:
+    case Vehicle::Weight:
         return vehicle.weight;
 
     default:
@@ -67,23 +67,23 @@ QVariant VehicleModel::headerData(int section,
     {
         switch (section)
         {
-        case 0:
+        case Vehicle::Id:
             return "ID";
 
-        case 1:
+        case Vehicle::Type:
             return QStringLiteral("Тип");
 
-        case 2:
+        case Vehicle::Brand:
             return QStringLiteral("Марка");
 
-        case 3:
+        case Vehicle::Model:
             return QStringLiteral("Модель");
 
-        case 4:
+        case Vehicle::Year:
             return QStringLiteral("Год");
 
-        case 5:
-            return QStringLiteral("Вес");
+        case Vehicle::Weight:
+            return QStringLiteral("Вес, кг");
 
         default:
             return QVariant();
@@ -105,7 +105,7 @@ Qt::ItemFlags VehicleModel::flags(const QModelIndex& index) const
         Qt::ItemIsEnabled |
         Qt::ItemIsSelectable;
 
-    if (index.column() != 0)
+    if (index.column() != Vehicle::Id)
     {
         flags |= Qt::ItemIsEditable;
     }
@@ -124,29 +124,74 @@ bool VehicleModel::setData(const QModelIndex& index,
         return false;
 
     Vehicle& vehicle = m_vehicles[index.row()];
+    m_lastError.clear();
 
     switch (index.column())
     {
-    case 1:
-        vehicle.type = value.toString();
-        break;
+    case Vehicle::Type:
+    {
+        QString type = value.toString().trimmed();
 
-    case 2:
-        vehicle.brand = value.toString();
-        break;
+        if (type.isEmpty())
+        {
+            m_lastError = QStringLiteral("Поле \"Тип\" не может быть пустым.");
+            return false;
+        }
 
-    case 3:
-        vehicle.model = value.toString();
+        vehicle.type = type; 
         break;
+    }
+    case Vehicle::Brand:
+    {
+        QString brand = value.toString().trimmed();
 
-    case 4:
-        vehicle.year = value.toInt();
+        if (brand.isEmpty())
+        {
+            m_lastError = QStringLiteral("Поле \"Марка\" не может быть пустым.");
+            return false;
+        }
+
+        vehicle.brand = brand;
         break;
+    }
+    case Vehicle::Model:
+    {
+        QString model = value.toString().trimmed();
 
-    case 5:
-        vehicle.weight = value.toDouble();
+        if (model.isEmpty())
+        {
+            m_lastError = QStringLiteral("Поле \"Модель\" не может быть пустым.");
+            return false;
+        }
+
+        vehicle.model = model;
         break;
+    }
+    case Vehicle::Year:
+    {
+        int year = value.toInt();
 
+        if (year < 1900 || year > QDate::currentDate().year())
+        {
+            m_lastError = QStringLiteral("Некорректный год выпуска.");
+            return false;
+        }
+        vehicle.year = year;
+        break;
+    }
+    case Vehicle::Weight:
+    {
+        double weight = value.toDouble();
+
+        if (weight <= 0)
+        {
+            m_lastError = QStringLiteral("Некорректный вес транспортного средства.");
+            return false;
+        }
+
+        vehicle.weight = weight;
+        break;
+    }
     default:
         return false;
     }
@@ -210,6 +255,11 @@ void VehicleModel::setVehicles(
     }
 
     endResetModel();
+}
+
+QString VehicleModel::lastError() const
+{
+    return m_lastError;
 }
 
 

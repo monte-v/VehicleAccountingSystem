@@ -3,11 +3,13 @@
 #include <QtWidgets/QMainWindow>
 #include <QFileDialog>
 #include <QMessageBox>
+#include <QSortFilterProxyModel>
 
 #include "ui_VehicleAccountingSystem.h"
 #include "VehicleModel.h"
 #include "VehicleDialog.h"
 #include "JsonStorage.h"
+#include "VehicleDelegate.h"
 
 class VehicleAccountingSystem : public QMainWindow
 {
@@ -20,6 +22,8 @@ public:
 private:
     Ui::VehicleAccountingSystemClass ui;
     VehicleModel m_model;
+    QSortFilterProxyModel m_proxyModel;
+    VehicleDelegate* m_delegate;
 
 private slots:
     void on_btnTest_clicked();

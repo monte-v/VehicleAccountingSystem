@@ -5,7 +5,12 @@ VehicleAccountingSystem::VehicleAccountingSystem(QWidget *parent)
 {
     ui.setupUi(this);
 
-    ui.tableView->setModel(&m_model);
+    m_proxyModel.setSourceModel(&m_model);
+    ui.tableView->setModel(&m_proxyModel);
+    ui.tableView->setSortingEnabled(true);
+
+    m_delegate = new VehicleDelegate(this);
+    ui.tableView->setItemDelegate(m_delegate);
 
     ui.tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
@@ -42,12 +47,14 @@ void VehicleAccountingSystem::on_btnTest_clicked()
 
 void VehicleAccountingSystem::on_btnDelete_clicked()
 {
-    QModelIndex index = ui.tableView->currentIndex();
+    QModelIndex proxyIndex = ui.tableView->currentIndex();
 
-    if (!index.isValid())
+    if (!proxyIndex.isValid())
         return;
 
-    m_model.removeVehicle(index.row());
+    QModelIndex sourceIndex = m_proxyModel.mapToSource(proxyIndex);
+
+    m_model.removeVehicle(sourceIndex.row());
 }
 
 void VehicleAccountingSystem::on_btnAdd_clicked()

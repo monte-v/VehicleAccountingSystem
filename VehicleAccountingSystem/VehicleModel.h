@@ -1,9 +1,12 @@
 ﻿#pragma once
 #include <Vehicle.h>
 #include <QAbstractTableModel>
+#include <QDate>
 
 class VehicleModel : public QAbstractTableModel
 {
+    Q_OBJECT
+
 public:
     explicit VehicleModel(QObject* parent = nullptr);
 
@@ -27,12 +30,14 @@ public:
     // CRUD
     void addVehicle(const Vehicle& vehicle);
     void removeVehicle(int row);
-
     QVector<Vehicle> vehicles() const;
     void setVehicles(const QVector<Vehicle>& vehicles);
+
+    QString lastError() const;
 
 private:
     QVector<Vehicle> m_vehicles;
     int m_nextId = 1;
+    QString m_lastError;
 };
 

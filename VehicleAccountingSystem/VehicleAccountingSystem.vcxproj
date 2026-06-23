@@ -93,6 +93,7 @@
   </ItemDefinitionGroup>
   <ItemGroup>
     <ClCompile Include="JsonStorage.cpp" />
+    <ClCompile Include="VehicleDelegate.cpp" />
     <ClCompile Include="VehicleDialog.cpp" />
     <ClCompile Include="VehicleModel.cpp" />
     <QtRcc Include="VehicleAccountingSystem.qrc" />
@@ -106,7 +107,8 @@
     <ClInclude Include="JsonStorage.h" />
     <ClInclude Include="Vehicle.h" />
     <QtMoc Include="VehicleDialog.h" />
-    <ClInclude Include="VehicleModel.h" />
+    <ClInclude Include="VehicleDelegate.h" />
+    <QtMoc Include="VehicleModel.h" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Condition="Exists('$(QtMsBuild)\qt.targets')">
