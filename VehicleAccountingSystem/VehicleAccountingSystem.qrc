@@ -1,4 +1,5 @@
 <RCC>
     <qresource prefix="VehicleAccountingSystem">
+		<file>resources/icons/app.ico</file>
     </qresource>
 </RCC>

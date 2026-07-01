@@ -202,9 +202,9 @@
   <widget class="QSpinBox" name="sbYear">
    <property name="geometry">
     <rect>
-     <x>281</x>
+     <x>261</x>
      <y>140</y>
-     <width>91</width>
+     <width>111</width>
      <height>24</height>
     </rect>
    </property>
@@ -227,7 +227,7 @@
   <widget class="QLabel" name="lYear">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>190</x>
      <y>140</y>
      <width>55</width>
      <height>21</height>
@@ -246,9 +246,9 @@
   <widget class="QDoubleSpinBox" name="dsbWeight">
    <property name="geometry">
     <rect>
-     <x>281</x>
+     <x>261</x>
      <y>180</y>
-     <width>91</width>
+     <width>111</width>
      <height>24</height>
     </rect>
    </property>
@@ -265,13 +265,13 @@
     <string> кг</string>
    </property>
    <property name="maximum">
-    <double>100000.000000000000000</double>
+    <double>1000000.000000000000000</double>
    </property>
   </widget>
   <widget class="QLabel" name="lWeight">
    <property name="geometry">
     <rect>
-     <x>210</x>
+     <x>190</x>
      <y>180</y>
      <width>55</width>
      <height>21</height>

@@ -12,6 +12,19 @@ VehicleAccountingSystem::VehicleAccountingSystem(QWidget *parent)
     m_delegate = new VehicleDelegate(this);
     ui.tableView->setItemDelegate(m_delegate);
 
+    m_proxyModel.setFilterCaseSensitivity(Qt::CaseInsensitive);
+    m_proxyModel.setFilterKeyColumn(1);
+
+    connect(ui.leSearch,
+        &QLineEdit::textChanged,
+        this,
+        &VehicleAccountingSystem::onSearchTextChanged);
+
+    connect(ui.cbColumn,
+        QOverload<int>::of(&QComboBox::currentIndexChanged),
+        this,
+        &VehicleAccountingSystem::onSearchColumnChanged);
+
     ui.tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
     ui.tableView->setSelectionBehavior(
@@ -24,29 +37,20 @@ VehicleAccountingSystem::VehicleAccountingSystem(QWidget *parent)
 VehicleAccountingSystem::~VehicleAccountingSystem()
 {}
 
-void VehicleAccountingSystem::on_btnTest_clicked()
-{
-    Vehicle v1;
-    v1.type = QStringLiteral("Автомобиль");
-    v1.brand = "Toyota";
-    v1.model = "Camry";
-    v1.year = 2020;
-    v1.weight = 1500;
-
-    m_model.addVehicle(v1);
-
-    Vehicle v2;
-    v2.type = QStringLiteral("Самолет");
-    v2.brand = "Boeing";
-    v2.model = "747";
-    v2.year = 2010;
-    v2.weight = 183500;
-
-    m_model.addVehicle(v2);
-}
-
 void VehicleAccountingSystem::on_btnDelete_clicked()
 {
+
+    QMessageBox::StandardButton reply = QMessageBox::warning(
+        this,
+        QStringLiteral("Подтверждение"),
+        QStringLiteral("Вы уверены, что удалить запись?"),
+        QMessageBox::Yes | QMessageBox::No,
+        QMessageBox::No
+    );
+
+    if (reply == QMessageBox::No)
+        return;
+
     QModelIndex proxyIndex = ui.tableView->currentIndex();
 
     if (!proxyIndex.isValid())
@@ -69,6 +73,21 @@ void VehicleAccountingSystem::on_btnAdd_clicked()
 
 void VehicleAccountingSystem::on_mbfOpen_triggered() 
 {
+    if (!m_model.vehicles().isEmpty())
+    {
+        QMessageBox::StandardButton reply = QMessageBox::warning(
+            this,
+            QStringLiteral("Подтверждение"),
+            QStringLiteral("При открытии нового файла все текущие данные будут удалены.\n"
+                "Вы уверены, что хотите продолжить?"),
+            QMessageBox::Yes | QMessageBox::No,
+            QMessageBox::No 
+        );
+
+        if (reply == QMessageBox::No)
+            return;
+    }
+
     QString fileName = QFileDialog::getOpenFileName(
         this,
         QStringLiteral("Открыть файл"),
@@ -76,10 +95,10 @@ void VehicleAccountingSystem::on_mbfOpen_triggered()
         QStringLiteral("JSON (*.json)")
     );
 
-    if (fileName.isEmpty()) 
+    if (fileName.isEmpty())
         return;
 
-    QVector<Vehicle> vehicles;
+     QVector<Vehicle> vehicles;
 
     if (!JsonStorage::load(fileName, vehicles))
     {
@@ -91,6 +110,11 @@ void VehicleAccountingSystem::on_mbfOpen_triggered()
     }
 
     m_model.setVehicles(vehicles);
+
+    QMessageBox::information(
+        this,
+        QStringLiteral("Успех"),
+        QStringLiteral("Загружено %1 записей.").arg(vehicles.size()));
 }
 
 void VehicleAccountingSystem::on_mbfSave_triggered()
@@ -121,4 +145,14 @@ void VehicleAccountingSystem::on_mbfSave_triggered()
             QStringLiteral("Ошибка"),
             QStringLiteral("Не удалось сохранить файл."));
     }
+}
+
+void VehicleAccountingSystem::onSearchTextChanged(const QString& text)
+{
+    m_proxyModel.setFilterRegularExpression(text);
+}
+
+void VehicleAccountingSystem::onSearchColumnChanged(int index)
+{
+    m_proxyModel.setFilterKeyColumn(index);
 }
