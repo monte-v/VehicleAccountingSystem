@@ -5,11 +5,17 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>qrc;rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="views">
-      <UniqueIdentifier>{96cb9c0b-cf11-4847-9b22-595545c844f8}</UniqueIdentifier>
-    </Filter>
     <Filter Include="models">
       <UniqueIdentifier>{1e090619-8454-4f30-ba00-73be68ab9b5a}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="services">
+      <UniqueIdentifier>{ac763b9c-4ada-47c2-8584-a7377628c3f7}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="views/controllers">
+      <UniqueIdentifier>{96cb9c0b-cf11-4847-9b22-595545c844f8}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="delegates">
+      <UniqueIdentifier>{499418c1-48ac-464d-9a7f-98808b68605f}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -19,18 +25,50 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="VehicleAccountingSystem.cpp">
-      <Filter>views</Filter>
+      <Filter>views/controllers</Filter>
     </ClCompile>
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="VehicleModel.cpp">
+      <Filter>models</Filter>
+    </ClCompile>
+    <ClCompile Include="JsonStorage.cpp">
+      <Filter>services</Filter>
+    </ClCompile>
+    <ClCompile Include="VehicleDialog.cpp">
+      <Filter>views/controllers</Filter>
+    </ClCompile>
+    <ClCompile Include="VehicleDelegate.cpp">
+      <Filter>delegates</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="VehicleAccountingSystem.h">
-      <Filter>views</Filter>
+      <Filter>views/controllers</Filter>
+    </QtMoc>
+    <QtMoc Include="VehicleDialog.h">
+      <Filter>views/controllers</Filter>
+    </QtMoc>
+    <QtMoc Include="VehicleModel.h">
+      <Filter>models</Filter>
     </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="VehicleAccountingSystem.ui">
-      <Filter>views</Filter>
+      <Filter>views/controllers</Filter>
     </QtUic>
+    <QtUic Include="VehicleDialog.ui">
+      <Filter>views/controllers</Filter>
+    </QtUic>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="Vehicle.h">
+      <Filter>models</Filter>
+    </ClInclude>
+    <ClInclude Include="JsonStorage.h">
+      <Filter>services</Filter>
+    </ClInclude>
+    <ClInclude Include="VehicleDelegate.h">
+      <Filter>delegates</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>
