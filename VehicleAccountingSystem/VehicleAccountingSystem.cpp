@@ -56,6 +56,8 @@ void VehicleAccountingSystem::on_btnDelete_clicked()
     QModelIndex sourceIndex = m_proxyModel.mapToSource(proxyIndex);
 
     m_model.removeVehicle(sourceIndex.row());
+
+    updateTypeFilterList();
 }
 
 void VehicleAccountingSystem::on_btnAdd_clicked()
@@ -70,6 +72,8 @@ void VehicleAccountingSystem::on_btnAdd_clicked()
             return;
 
         m_model.addVehicle(vehicle);
+
+        updateTypeFilterList();
     }
 }
 
@@ -112,6 +116,8 @@ void VehicleAccountingSystem::on_mbfOpen_triggered()
     }
 
     m_model.setVehicles(vehicles);
+
+    updateTypeFilterList();
 
     QMessageBox::information(
         this,
@@ -159,10 +165,37 @@ void VehicleAccountingSystem::onTypeFilterChanged(QListWidgetItem* current,
 {
     Q_UNUSED(previous);
 
+    if (!current) {
+        return;
+    }
+
     QString type = current->text();
 
     if (type == QStringLiteral("Все типы"))
         m_proxyModel.setTypeFilter(QStringLiteral(""));
     else
         m_proxyModel.setTypeFilter(type);
+}
+
+void VehicleAccountingSystem::updateTypeFilterList()
+{
+    ui.listWidget->blockSignals(true);
+
+    QStringList types;
+    for (const auto& vehicle : m_model.vehicles()) {
+        QString type = vehicle->getType();
+        if (!type.isEmpty() && !types.contains(type)) {
+            types.append(type);
+        }
+    }
+
+    types.sort();
+
+    ui.listWidget->clear();
+    ui.listWidget->addItem(QStringLiteral("Все типы"));
+    ui.listWidget->addItems(types);
+
+    ui.listWidget->blockSignals(false);
+
+    ui.listWidget->setCurrentRow(0);
 }

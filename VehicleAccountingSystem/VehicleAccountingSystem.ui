@@ -193,21 +193,6 @@ font: 9pt &quot;Segoe UI&quot;;</string>
         <height>16777215</height>
        </size>
       </property>
-      <item>
-       <property name="text">
-        <string>Все типы</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Автомобиль</string>
-       </property>
-      </item>
-      <item>
-       <property name="text">
-        <string>Водный транспорт</string>
-       </property>
-      </item>
      </widget>
     </item>
    </layout>

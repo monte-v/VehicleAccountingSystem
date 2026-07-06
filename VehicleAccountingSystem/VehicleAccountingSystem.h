@@ -21,6 +21,8 @@ public:
     ~VehicleAccountingSystem();
 
 private:
+    void updateTypeFilterList();
+
     Ui::VehicleAccountingSystemClass ui;
     VehicleModel m_model;
     VehicleFilterProxyModel m_proxyModel;
@@ -36,6 +38,6 @@ private slots:
     void onSearchTextChanged(const QString& text);
 
     void onTypeFilterChanged(QListWidgetItem* current,
-        QListWidgetItem* previous);
+        QListWidgetItem* previous); 
 };
 

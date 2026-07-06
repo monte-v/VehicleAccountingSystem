@@ -6,6 +6,7 @@
 #include <QDate>
 
 #include "Vehicle.h"
+#include "CustomVehicle.h"
 #include "Car.h"
 #include "Boat.h"
 #include "ui_VehicleDialog.h"
@@ -24,6 +25,11 @@ public:
 
 private:
     Ui::VehicleDialog ui;
+
+    void updateTypeFilterList();
+
+private slots:
+    void onTypeChanged(int index);
 
 protected:
     void accept() override;

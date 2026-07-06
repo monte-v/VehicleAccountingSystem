@@ -94,6 +94,7 @@
   <ItemGroup>
     <ClCompile Include="Boat.cpp" />
     <ClCompile Include="Car.cpp" />
+    <ClCompile Include="CustomVehicle.cpp" />
     <ClCompile Include="JsonStorage.cpp" />
     <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="VehicleDelegate.cpp" />
@@ -110,6 +111,7 @@
   <ItemGroup>
     <ClInclude Include="Boat.h" />
     <ClInclude Include="Car.h" />
+    <ClInclude Include="CustomVehicle.h" />
     <ClInclude Include="JsonStorage.h" />
     <ClInclude Include="Vehicle.h" />
     <QtMoc Include="VehicleFilterProxyModel.h" />

@@ -56,34 +56,19 @@ bool JsonStorage::load(const QString& fileName,
 	{
 		QJsonObject jsonObject = value.toObject();
 
-		QString type = jsonObject["type"].toString().trimmed();
+		auto vehicle = std::make_shared<CustomVehicle>(
+			jsonObject["id"].toInt(),
+			jsonObject["brand"].toString(),
+			jsonObject["model"].toString(),
+			jsonObject["year"].toInt(),
+			jsonObject["weight"].toDouble()
+		);
 
-		std::shared_ptr<Vehicle> vehicle;
-
-		// пока только Car
-		if (type == "Автомобиль")
-		{
-			vehicle = std::make_shared<Car>(
-				jsonObject["id"].toInt(),
-				jsonObject["brand"].toString(),
-				jsonObject["model"].toString(),
-				jsonObject["year"].toInt(),
-				jsonObject["weight"].toDouble()
-			);
-		}
-		else
-		{
-			vehicle = std::make_shared<Car>(
-				jsonObject["id"].toInt(),
-				jsonObject["brand"].toString(),
-				jsonObject["model"].toString(),
-				jsonObject["year"].toInt(),
-				jsonObject["weight"].toDouble()
-			);
-		}
+		vehicle->setTypeName(jsonObject["type"].toString());
 
 		vehicles.append(vehicle);
 	}
+
 
 	return true;
 }
