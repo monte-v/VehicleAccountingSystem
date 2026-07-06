@@ -1,25 +1,48 @@
 ﻿#pragma once
 #include <QString>
+#include <QVariant>
 
-struct Vehicle
+class Vehicle
 {
-    enum Columns
-    {
+public:
+    enum Columns {
         Id = 0,
         Type,
         Brand,
         Model,
         Year,
         Weight,
-
         FIELD_COUNT
     };
 
-    int id;
-    QString type;
-    QString brand;
-    QString model;
-    int year;
-    double weight;
+    Vehicle(int id = 0, const QString& brand = "", const QString& model = "",
+        int year = 2000, double weight = 0.0);
+    virtual ~Vehicle() = default;
 
+    virtual QString getType() const = 0;
+    virtual QVector<int> getVisibleColumns() const = 0;
+    virtual QString getColumnHeader(int column) const;
+    virtual QVariant getColumnData(int column, int role = Qt::DisplayRole) const;
+
+    virtual bool setColumnData(int column, const QVariant& value);
+
+    int getId() const { return m_id; }
+    QString getBrand() const { return m_brand; }
+    QString getModel() const { return m_model; }
+    int getYear() const { return m_year; }
+    double getWeight() const { return m_weight; }
+
+    void setId(int id) { m_id = id; }
+    void setBrand(const QString& brand) { m_brand = brand; }
+    void setModel(const QString& model) { m_model = model; }
+    void setYear(int year) { m_year = year; }
+    void setWeight(double weight) { m_weight = weight; }
+
+protected:
+    int m_id;
+    QString m_type;
+    QString m_brand;
+    QString m_model;
+    int m_year;
+    double m_weight;
 };

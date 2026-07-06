@@ -15,29 +15,44 @@ VehicleDialog::~VehicleDialog()
 
 void VehicleDialog::setVehicle(const Vehicle& vehicle)
 {
-    ui.leType->setText(vehicle.type);
-    ui.leBrand->setText(vehicle.brand);
-    ui.leModel->setText(vehicle.model);
-    ui.sbYear->setValue(vehicle.year);
-    ui.dsbWeight->setValue(vehicle.weight);
+    ui.cbType->setCurrentText(vehicle.getType());
+    ui.leBrand->setText(vehicle.getBrand());
+    ui.leModel->setText(vehicle.getModel());
+    ui.sbYear->setValue(vehicle.getYear());
+    ui.dsbWeight->setValue(vehicle.getWeight());
 }
 
-Vehicle VehicleDialog::vehicle() const
+std::shared_ptr<Vehicle> VehicleDialog::vehicle() const
 {
-    Vehicle vehicle;
+    QString type = ui.cbType->currentText();
+    int typeIndex = ui.cbType->currentIndex();
 
-    vehicle.type = ui.leType->text();
-    vehicle.brand = ui.leBrand->text();
-    vehicle.model = ui.leModel->text();
-    vehicle.year = ui.sbYear->value();
-    vehicle.weight = ui.dsbWeight->value();
+    std::shared_ptr<Vehicle> result;
 
-    return vehicle;
+
+    switch (typeIndex)
+    {
+    case 0: // Автомобиль
+        return std::make_shared<Car>(
+            0,
+            ui.leBrand->text(),
+            ui.leModel->text(),
+            ui.sbYear->value(),
+            ui.dsbWeight->value());
+    case 1: // Катер
+        return std::make_shared<Boat>(
+            0,
+            ui.leBrand->text(),
+            ui.leModel->text(),
+            ui.sbYear->value(),
+            ui.dsbWeight->value());
+    }
+    return result;
 }
 
 void VehicleDialog::accept()
 {
-    if (ui.leType->text().trimmed().isEmpty() ||
+    if (ui.cbType->currentText().isEmpty() || 
         ui.leBrand->text().trimmed().isEmpty() ||
         ui.leModel->text().trimmed().isEmpty() ||
         ui.dsbWeight->value() <= 0)
@@ -45,7 +60,7 @@ void VehicleDialog::accept()
         QMessageBox::warning(
             this,
             QStringLiteral("Ошибка"),
-            QStringLiteral("Заполните все поля.\nВес должен быть больше нуля."));
+            QStringLiteral("Заполните все поля"));
         return;
     }
     if (ui.sbYear->value() > QDate::currentDate().year())

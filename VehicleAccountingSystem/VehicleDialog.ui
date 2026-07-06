@@ -110,22 +110,6 @@
     <string>Тип</string>
    </property>
   </widget>
-  <widget class="QLineEdit" name="leType">
-   <property name="geometry">
-    <rect>
-     <x>110</x>
-     <y>20</y>
-     <width>261</width>
-     <height>24</height>
-    </rect>
-   </property>
-   <property name="font">
-    <font>
-     <family>Segoe UI</family>
-     <pointsize>9</pointsize>
-    </font>
-   </property>
-  </widget>
   <widget class="QLineEdit" name="leBrand">
    <property name="geometry">
     <rect>
@@ -286,6 +270,26 @@
    <property name="text">
     <string>Вес</string>
    </property>
+  </widget>
+  <widget class="QComboBox" name="cbType">
+   <property name="geometry">
+    <rect>
+     <x>110</x>
+     <y>20</y>
+     <width>261</width>
+     <height>24</height>
+    </rect>
+   </property>
+   <item>
+    <property name="text">
+     <string>Автомобиль</string>
+    </property>
+   </item>
+   <item>
+    <property name="text">
+     <string>Водный транспорт</string>
+    </property>
+   </item>
   </widget>
  </widget>
  <resources/>

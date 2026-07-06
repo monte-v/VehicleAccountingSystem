@@ -92,9 +92,13 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="Boat.cpp" />
+    <ClCompile Include="Car.cpp" />
     <ClCompile Include="JsonStorage.cpp" />
+    <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="VehicleDelegate.cpp" />
     <ClCompile Include="VehicleDialog.cpp" />
+    <ClCompile Include="VehicleFilterProxyModel.cpp" />
     <ClCompile Include="VehicleModel.cpp" />
     <QtRcc Include="VehicleAccountingSystem.qrc" />
     <QtUic Include="VehicleDialog.ui" />
@@ -104,8 +108,11 @@
     <ClCompile Include="main.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="Boat.h" />
+    <ClInclude Include="Car.h" />
     <ClInclude Include="JsonStorage.h" />
     <ClInclude Include="Vehicle.h" />
+    <QtMoc Include="VehicleFilterProxyModel.h" />
     <QtMoc Include="VehicleDialog.h" />
     <ClInclude Include="VehicleDelegate.h" />
     <QtMoc Include="VehicleModel.h" />

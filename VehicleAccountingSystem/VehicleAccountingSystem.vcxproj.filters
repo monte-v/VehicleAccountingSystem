@@ -17,6 +17,12 @@
     <Filter Include="delegates">
       <UniqueIdentifier>{499418c1-48ac-464d-9a7f-98808b68605f}</UniqueIdentifier>
     </Filter>
+    <Filter Include="classes">
+      <UniqueIdentifier>{85a0354e-ed1f-4173-af46-84b30844fc16}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="filter">
+      <UniqueIdentifier>{0e91ce7e-1430-48e9-83d0-a5f0592c7bc3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <QtRcc Include="VehicleAccountingSystem.qrc">
@@ -40,6 +46,18 @@
     <ClCompile Include="VehicleDelegate.cpp">
       <Filter>delegates</Filter>
     </ClCompile>
+    <ClCompile Include="Vehicle.cpp">
+      <Filter>classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Car.cpp">
+      <Filter>classes</Filter>
+    </ClCompile>
+    <ClCompile Include="Boat.cpp">
+      <Filter>classes</Filter>
+    </ClCompile>
+    <ClCompile Include="VehicleFilterProxyModel.cpp">
+      <Filter>filter</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <QtMoc Include="VehicleAccountingSystem.h">
@@ -51,6 +69,9 @@
     <QtMoc Include="VehicleModel.h">
       <Filter>models</Filter>
     </QtMoc>
+    <QtMoc Include="VehicleFilterProxyModel.h">
+      <Filter>filter</Filter>
+    </QtMoc>
   </ItemGroup>
   <ItemGroup>
     <QtUic Include="VehicleAccountingSystem.ui">
@@ -61,14 +82,20 @@
     </QtUic>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Vehicle.h">
-      <Filter>models</Filter>
-    </ClInclude>
     <ClInclude Include="JsonStorage.h">
       <Filter>services</Filter>
     </ClInclude>
     <ClInclude Include="VehicleDelegate.h">
       <Filter>delegates</Filter>
+    </ClInclude>
+    <ClInclude Include="Vehicle.h">
+      <Filter>classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Car.h">
+      <Filter>classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Boat.h">
+      <Filter>classes</Filter>
     </ClInclude>
   </ItemGroup>
 </Project>

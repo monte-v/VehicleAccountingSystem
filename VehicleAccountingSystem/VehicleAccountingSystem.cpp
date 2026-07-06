@@ -12,18 +12,15 @@ VehicleAccountingSystem::VehicleAccountingSystem(QWidget *parent)
     m_delegate = new VehicleDelegate(this);
     ui.tableView->setItemDelegate(m_delegate);
 
-    m_proxyModel.setFilterCaseSensitivity(Qt::CaseInsensitive);
-    m_proxyModel.setFilterKeyColumn(1);
-
     connect(ui.leSearch,
         &QLineEdit::textChanged,
         this,
         &VehicleAccountingSystem::onSearchTextChanged);
 
-    connect(ui.cbColumn,
-        QOverload<int>::of(&QComboBox::currentIndexChanged),
+    connect(ui.listWidget,
+        &QListWidget::currentItemChanged,
         this,
-        &VehicleAccountingSystem::onSearchColumnChanged);
+        &VehicleAccountingSystem::onTypeFilterChanged);
 
     ui.tableView->horizontalHeader()->setSectionResizeMode(QHeaderView::Stretch);
 
@@ -67,7 +64,12 @@ void VehicleAccountingSystem::on_btnAdd_clicked()
 
     if (dialog.exec() == QDialog::Accepted)
     {
-        m_model.addVehicle(dialog.vehicle());
+        auto vehicle = dialog.vehicle();
+
+        if (!vehicle)   
+            return;
+
+        m_model.addVehicle(vehicle);
     }
 }
 
@@ -98,7 +100,7 @@ void VehicleAccountingSystem::on_mbfOpen_triggered()
     if (fileName.isEmpty())
         return;
 
-     QVector<Vehicle> vehicles;
+    QVector<std::shared_ptr<Vehicle>> vehicles;
 
     if (!JsonStorage::load(fileName, vehicles))
     {
@@ -149,10 +151,18 @@ void VehicleAccountingSystem::on_mbfSave_triggered()
 
 void VehicleAccountingSystem::onSearchTextChanged(const QString& text)
 {
-    m_proxyModel.setFilterRegularExpression(text);
+    m_proxyModel.setSearchText(text);
 }
 
-void VehicleAccountingSystem::onSearchColumnChanged(int index)
+void VehicleAccountingSystem::onTypeFilterChanged(QListWidgetItem* current,
+    QListWidgetItem* previous)
 {
-    m_proxyModel.setFilterKeyColumn(index);
+    Q_UNUSED(previous);
+
+    QString type = current->text();
+
+    if (type == QStringLiteral("Все типы"))
+        m_proxyModel.setTypeFilter(QStringLiteral(""));
+    else
+        m_proxyModel.setTypeFilter(type);
 }

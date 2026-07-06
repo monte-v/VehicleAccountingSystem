@@ -2,6 +2,7 @@
 #include <Vehicle.h>
 #include <QAbstractTableModel>
 #include <QDate>
+#include <memory> 
 
 class VehicleModel : public QAbstractTableModel
 {
@@ -28,16 +29,15 @@ public:
         int role = Qt::EditRole) override;
 
     // CRUD
-    void addVehicle(const Vehicle& vehicle);
+    void addVehicle(std::shared_ptr<Vehicle> vehicle);
     void removeVehicle(int row);
-    QVector<Vehicle> vehicles() const;
-    void setVehicles(const QVector<Vehicle>& vehicles);
+    QVector<std::shared_ptr<Vehicle>> vehicles() const;
+    void setVehicles(const QVector<std::shared_ptr<Vehicle>>& vehicles);
 
     QString lastError() const;
 
 private:
-    QVector<Vehicle> m_vehicles;
+    QVector<std::shared_ptr<Vehicle>> m_vehicles;
     int m_nextId = 1;
     QString m_lastError;
 };
-

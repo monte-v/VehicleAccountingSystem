@@ -51,14 +51,7 @@
     <property name="spacing">
      <number>0</number>
     </property>
-    <item row="2" column="2">
-     <widget class="QTableView" name="tableView">
-      <attribute name="verticalHeaderVisible">
-       <bool>false</bool>
-      </attribute>
-     </widget>
-    </item>
-    <item row="1" column="2">
+    <item row="1" column="1">
      <widget class="QWidget" name="sideBar" native="true">
       <property name="sizePolicy">
        <sizepolicy hsizetype="Expanding" vsizetype="Fixed">
@@ -112,50 +105,6 @@
              <string notr="true">background-color: rgb(255, 255, 255);
 font: 9pt &quot;Segoe UI&quot;;</string>
             </property>
-           </widget>
-          </item>
-          <item>
-           <widget class="QComboBox" name="cbColumn">
-            <property name="styleSheet">
-             <string notr="true">background-color: rgb(255, 255, 255);
-font: 9pt &quot;Segoe UI&quot;;</string>
-            </property>
-            <property name="currentText">
-             <string>Марка</string>
-            </property>
-            <property name="currentIndex">
-             <number>2</number>
-            </property>
-            <item>
-             <property name="text">
-              <string>ID</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Тип</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Марка</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Модель</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Год</string>
-             </property>
-            </item>
-            <item>
-             <property name="text">
-              <string>Вес</string>
-             </property>
-            </item>
            </widget>
           </item>
          </layout>
@@ -221,6 +170,44 @@ font: 9pt &quot;Segoe UI&quot;;</string>
         </widget>
        </item>
       </layout>
+     </widget>
+    </item>
+    <item row="2" column="1">
+     <widget class="QTableView" name="tableView">
+      <attribute name="verticalHeaderVisible">
+       <bool>false</bool>
+      </attribute>
+     </widget>
+    </item>
+    <item row="1" column="0" rowspan="2">
+     <widget class="QListWidget" name="listWidget">
+      <property name="minimumSize">
+       <size>
+        <width>50</width>
+        <height>258</height>
+       </size>
+      </property>
+      <property name="maximumSize">
+       <size>
+        <width>150</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <item>
+       <property name="text">
+        <string>Все типы</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Автомобиль</string>
+       </property>
+      </item>
+      <item>
+       <property name="text">
+        <string>Водный транспорт</string>
+       </property>
+      </item>
      </widget>
     </item>
    </layout>

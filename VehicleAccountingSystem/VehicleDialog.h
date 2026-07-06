@@ -6,6 +6,8 @@
 #include <QDate>
 
 #include "Vehicle.h"
+#include "Car.h"
+#include "Boat.h"
 #include "ui_VehicleDialog.h"
 
 
@@ -18,7 +20,7 @@ public:
     ~VehicleDialog();
 
     void setVehicle(const Vehicle& vehicle);
-    Vehicle vehicle() const;
+    std::shared_ptr<Vehicle> vehicle() const;
 
 private:
     Ui::VehicleDialog ui;
