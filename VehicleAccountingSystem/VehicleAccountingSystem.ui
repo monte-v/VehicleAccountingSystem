@@ -100,6 +100,19 @@
            <number>0</number>
           </property>
           <item>
+           <widget class="QLabel" name="label">
+            <property name="font">
+             <font>
+              <family>Segoe UI</family>
+              <pointsize>9</pointsize>
+             </font>
+            </property>
+            <property name="text">
+             <string>Поиск</string>
+            </property>
+           </widget>
+          </item>
+          <item>
            <widget class="QLineEdit" name="leSearch">
             <property name="styleSheet">
              <string notr="true">background-color: rgb(255, 255, 255);
