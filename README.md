@@ -25,5 +25,5 @@
 
 ## Интерфейс
 <p align="center">
-<img width="500" height="539" alt="app" src="https://github.com/user-attachments/assets/1c4ff7d5-d174-4772-a871-fd3e646c2606" />
+<img width="500" height="274" alt="app" src="https://github.com/user-attachments/assets/1c4ff7d5-d174-4772-a871-fd3e646c2606" />
 </p>
