@@ -1,6 +1,7 @@
 #include "JsonStorage.h"
 
-bool JsonStorage::save(const QString& fileName, const QVector<Vehicle>& vehicles)
+bool JsonStorage::save(const QString& fileName,
+	const QVector<std::shared_ptr<Vehicle>>& vehicles)
 {
 	QFile file(fileName);
 
@@ -9,16 +10,16 @@ bool JsonStorage::save(const QString& fileName, const QVector<Vehicle>& vehicles
 
 	QJsonArray jsonArray;
 
-	for (const Vehicle& vehicle : vehicles) 
+	for (const auto& vehicle : vehicles)
 	{
 		QJsonObject jsonObject;
 
-		jsonObject["id"] = vehicle.id;
-		jsonObject["type"] = vehicle.type;
-		jsonObject["brand"] = vehicle.brand;
-		jsonObject["model"] = vehicle.model;
-		jsonObject["year"] = vehicle.year;
-		jsonObject["weight"] = vehicle.weight;
+		jsonObject["id"] = vehicle->getId();
+		jsonObject["type"] = vehicle->getType();
+		jsonObject["brand"] = vehicle->getBrand();
+		jsonObject["model"] = vehicle->getModel();
+		jsonObject["year"] = vehicle->getYear();
+		jsonObject["weight"] = vehicle->getWeight();
 
 		jsonArray.append(jsonObject);
 	}
@@ -31,7 +32,8 @@ bool JsonStorage::save(const QString& fileName, const QVector<Vehicle>& vehicles
 	return true;
 }
 
-bool JsonStorage::load(const QString& fileName, QVector<Vehicle>& vehicles)
+bool JsonStorage::load(const QString& fileName,
+	QVector<std::shared_ptr<Vehicle>>& vehicles)
 {
 	QFile file(fileName);
 
@@ -54,16 +56,16 @@ bool JsonStorage::load(const QString& fileName, QVector<Vehicle>& vehicles)
 	{
 		QJsonObject jsonObject = value.toObject();
 
-		Vehicle vehicle;
-
-		vehicle.id = jsonObject["id"].toInt();
-		vehicle.type = jsonObject["type"].toString();
-		vehicle.brand = jsonObject["brand"].toString();
-		vehicle.model = jsonObject["model"].toString();
-		vehicle.year = jsonObject["year"].toInt();
-		vehicle.weight= jsonObject["weight"].toDouble();
-
-		vehicles.append(vehicle);
+		vehicles.append(
+			VehicleFactory::create(
+				jsonObject["type"].toString(),
+				jsonObject["id"].toInt(),
+				jsonObject["brand"].toString(),
+				jsonObject["model"].toString(),
+				jsonObject["year"].toInt(),
+				jsonObject["weight"].toDouble()
+			)
+		);
 	}
 
 	return true;

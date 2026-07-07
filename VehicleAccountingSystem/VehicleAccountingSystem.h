@@ -3,13 +3,14 @@
 #include <QtWidgets/QMainWindow>
 #include <QFileDialog>
 #include <QMessageBox>
-#include <QSortFilterProxyModel>
+#include <QTreeWidgetItem>
 
 #include "ui_VehicleAccountingSystem.h"
 #include "VehicleModel.h"
 #include "VehicleDialog.h"
 #include "JsonStorage.h"
 #include "VehicleDelegate.h"
+#include "VehicleFilterProxyModel.h"
 
 class VehicleAccountingSystem : public QMainWindow
 {
@@ -20,9 +21,11 @@ public:
     ~VehicleAccountingSystem();
 
 private:
+    void updateTypeFilterList();
+
     Ui::VehicleAccountingSystemClass ui;
     VehicleModel m_model;
-    QSortFilterProxyModel m_proxyModel;
+    VehicleFilterProxyModel m_proxyModel;
     VehicleDelegate* m_delegate;
 
 private slots:
@@ -33,6 +36,8 @@ private slots:
     void on_mbfSave_triggered();
 
     void onSearchTextChanged(const QString& text);
-    void onSearchColumnChanged(int index);
+
+    void onTypeFilterChanged(QListWidgetItem* current,
+        QListWidgetItem* previous); 
 };
 

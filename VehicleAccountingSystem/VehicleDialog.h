@@ -6,6 +6,7 @@
 #include <QDate>
 
 #include "Vehicle.h"
+#include "VehicleFactory.h"
 #include "ui_VehicleDialog.h"
 
 
@@ -18,10 +19,15 @@ public:
     ~VehicleDialog();
 
     void setVehicle(const Vehicle& vehicle);
-    Vehicle vehicle() const;
+    std::shared_ptr<Vehicle> vehicle() const;
 
 private:
     Ui::VehicleDialog ui;
+
+    void updateTypeFilterList();
+
+private slots:
+    void onTypeChanged(int index);
 
 protected:
     void accept() override;

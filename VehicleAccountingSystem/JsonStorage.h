@@ -5,16 +5,18 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
+#include <memory>
 
 #include "Vehicle.h"
+#include "VehicleFactory.h"
 
 class JsonStorage
 { 
 public:
     static bool save(const QString& fileName,
-        const QVector<Vehicle>& vehicles);
+        const QVector<std::shared_ptr<Vehicle>>& vehicles);
 
     static bool load(const QString& fileName,
-        QVector<Vehicle>& vehicles);
+        QVector<std::shared_ptr<Vehicle>>& vehicles);
 };
 
