@@ -20,11 +20,10 @@ public:
     virtual ~Vehicle() = default;
 
     virtual QString getType() const = 0;
-    virtual QVector<int> getVisibleColumns() const = 0;
-    virtual QString getColumnHeader(int column) const;
-    virtual QVariant getColumnData(int column, int role = Qt::DisplayRole) const;
-
-    virtual bool setColumnData(int column, const QVariant& value);
+ 
+    QString getColumnHeader(int column) const;
+    QVariant getColumnData(int column, int role = Qt::DisplayRole) const;
+    bool setColumnData(int column, const QVariant& value);
 
     int getId() const { return m_id; }
     QString getBrand() const { return m_brand; }

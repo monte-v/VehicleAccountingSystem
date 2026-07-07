@@ -6,9 +6,7 @@
 #include <QDate>
 
 #include "Vehicle.h"
-#include "CustomVehicle.h"
-#include "Car.h"
-#include "Boat.h"
+#include "VehicleFactory.h"
 #include "ui_VehicleDialog.h"
 
 

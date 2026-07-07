@@ -14,14 +14,6 @@ public:
 
     void setTypeName(const QString& type) { m_typeName = type; }
 
-    QVector<int> getVisibleColumns() const override {
-        return { Id, Type, Brand, Model, Year, Weight };
-    }
-
-    QString getColumnHeader(int column) const override;
-    QVariant getColumnData(int column, int role = Qt::DisplayRole) const override;
-    bool setColumnData(int column, const QVariant& value) override;
-
 private:
     QString m_typeName;
 };

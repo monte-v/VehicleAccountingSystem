@@ -8,8 +8,7 @@
 #include <memory>
 
 #include "Vehicle.h"
-#include "CustomVehicle.h"
-#include "Car.h"
+#include "VehicleFactory.h"
 
 class JsonStorage
 { 

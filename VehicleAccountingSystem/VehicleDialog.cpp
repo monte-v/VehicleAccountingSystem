@@ -45,17 +45,14 @@ std::shared_ptr<Vehicle> VehicleDialog::vehicle() const
         type = ui.cbType->currentText();
     }
 
-    auto vehicle = std::make_shared<CustomVehicle>(
+    return VehicleFactory::create(
+        type,
         0,
         ui.leBrand->text(),
         ui.leModel->text(),
         ui.sbYear->value(),
         ui.dsbWeight->value()
     );
-
-    vehicle->setTypeName(type);
-
-    return vehicle;
 }
 
 void VehicleDialog::onTypeChanged(int index)

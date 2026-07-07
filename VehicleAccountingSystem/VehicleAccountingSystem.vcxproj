@@ -99,6 +99,7 @@
     <ClCompile Include="Vehicle.cpp" />
     <ClCompile Include="VehicleDelegate.cpp" />
     <ClCompile Include="VehicleDialog.cpp" />
+    <ClCompile Include="VehicleFactory.cpp" />
     <ClCompile Include="VehicleFilterProxyModel.cpp" />
     <ClCompile Include="VehicleModel.cpp" />
     <QtRcc Include="VehicleAccountingSystem.qrc" />
@@ -114,6 +115,7 @@
     <ClInclude Include="CustomVehicle.h" />
     <ClInclude Include="JsonStorage.h" />
     <ClInclude Include="Vehicle.h" />
+    <ClInclude Include="VehicleFactory.h" />
     <QtMoc Include="VehicleFilterProxyModel.h" />
     <QtMoc Include="VehicleDialog.h" />
     <ClInclude Include="VehicleDelegate.h" />
